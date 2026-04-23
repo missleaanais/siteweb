@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Princesse Athénaïs – Site officiel</title>
+  <meta name="description" content="Site vitrine officiel de Princesse Athénaïs, modèle et créatrice de contenu. Présentation, plateformes et contact pour collaborations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+:root {
+  --bg-main: radial-gradient(circle at top, #050816 0, #02010a 45%, #000000 100%);
+  --bg-header: rgba(2, 6, 23, 0.96);
+  --bg-card: rgba(5, 10, 25, 0.98);
+
+  --accent: #8b5cf6;
+  --accent-soft: rgba(139, 92, 246, 0.4);
+  --accent-warm: #e11d74;
+
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-soft: rgba(148, 163, 184, 0.45);
+
+  --radius-lg: 22px;
+  --radius-full: 999px;
+
+  --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.85);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+main {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 32px 16px 72px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  main { padding: 40px 24px 90px; }
+}
+
+/* --- FOND ANIMÉ --- */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: -10%;
+  pointer-events: none;
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(circle at 5% 15%, rgba(99, 102, 241, 0.3), transparent 55%),
+    radial-gradient(circle at 90% 85%, rgba(225, 29, 116, 0.25), transparent 55%);
+  z-index: 0;
+  animation: glowShift 18s ease-in-out infinite alternate;
+}
+
+body::after {
+  opacity: 0.18;
+  filter: blur(40px);
+  animation-duration: 28s;
+  box-shadow: inset 0 0 160px rgba(0, 0, 0, 0.9);
+}
+
+@keyframes glowShift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(0, -3%, 0) scale(1.05); }
+}
+
+/* --- HEADER --- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(18px);
+  background:
+    linear-gradient(to bottom,
+      rgba(3, 7, 18, 0.97),
+      rgba(3, 7, 18, 0.9),
+      transparent
+    );
+  border-bottom: 1px solid rgba(15, 23, 42, 0.95);
+}
+
+.header-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 10px 16px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background:
+    radial-gradient(circle at 30% 0, #e0e7ff, transparent 55%),
+    conic-gradient(from 200deg, #312e81, #6366f1, #e11d74, #312e81);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 18px;
+  color: #ffffff;
+  box-shadow:
+    0 0 18px rgba(79, 70, 229, 0.9),
+    0 0 40px rgba(225, 29, 116, 0.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 10% 0, rgba(255,255,255,0.4), transparent 60%);
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-text span:first-child {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+}
+
+.logo-text span:last-child {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+}
+
+nav {
+  display: none;
+  gap: 16px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+nav a {
+  color: var(--text-muted);
+  position: relative;
+  padding-bottom: 3px;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-warm), transparent);
+  transition: width 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--text-main);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+@media (min-width: 720px) {
+  nav { display: flex; }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 18px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: rgba(15, 23, 42, 0.96);
+  color: var(--text-main);
+  transition: all 0.18s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #312e81, #6366f1);
+  border: none;
+  color: #fff;
+  box-shadow:
+    0 12px 30px rgba(79, 70, 229, 0.75),
+    0 0 0 1px rgba(129, 140, 248, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px) translateZ(0);
+  box-shadow:
+    0 18px 40px rgba(79, 70, 229, 1),
+    0 0 0 1px rgba(191, 219, 254, 0.7);
+}
+
+.btn-outline:hover {
+  border-color: rgba(248, 250, 251, 0.9);
+  background: rgba(15, 23, 42, 0.98);
+  transform: translateY(-1px);
+}
+
+/* --- SECTIONS --- */
+section { padding: 32px 0; position: relative; }
+
+@media (min-width: 768px) {
+  section { padding: 40px 0; }
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin-bottom: 8px;
+  letter-spacing: 0.03em;
+}
+
+@media (min-width: 768px) {
+  .section-title { font-size: 30px; }
+}
+
+.section-text {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  margin-right: 10px;
+  vertical-align: middle;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent-warm));
+  opacity: 0.8;
+}
+
+/* --- HERO --- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding-top: 38px;
+  align-items: center;
+}
+
+@media (min-width: 840px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    padding-top: 60px;
+    gap: 40px;
+  }
+}
+.hero-badge {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  border-radius: 999px;
+  padding: 6px 10px 6px 8px;
+  background: rgba(3, 7, 18, 0.9);
+  border: 1px solid rgba(129, 140, 248, 0.7);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.95);
+}
+
+.hero-badge-label {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  font-size: 9px;
+}
+
+.hero-badge-text {
+  color: #e5e7eb;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero h1 span {
+  display: inline-block;
+  background: linear-gradient(135deg, #f9fafb, #a5b4fc);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@media (min-width: 768px) {
+  .hero h1 { font-size: 40px; }
+}
+
+.hero-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 22px;
+  max-width: 560px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.hero-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+.hero-media {
+  position: relative;
+  background: radial-gradient(circle at top, rgba(99, 102, 241, 0.18), transparent 60%),
+              var(--bg-card);
+  border-radius: 26px;
+  border: 1px solid rgba(129, 140, 248, 0.55);
+  padding: 10px;
+  box-shadow:
+    var(--shadow-soft),
+    0 0 0 1px rgba(15, 23, 42, 0.9);
+  overflow: hidden;
+}
+
+.hero-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 15% 0, rgba(248, 250, 252, 0.18), transparent 55%);
+  opacity: 0.7;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.hero-photo {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 260px;
+  background: linear-gradient(135deg, #020617, #111827);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.9);
+  transform: translateZ(0);
+}
+
+.hero-photo img {
+  transition: transform 6s ease-out, filter 0.4s ease-out;
+  transform-origin: center;
+}
+
+.hero-media:hover .hero-photo img {
+  transform: scale(1.05);
+  filter: saturate(1.05);
+}
+
+/* --- ABOUT --- */
+.about-card {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  padding: 22px 16px 24px;
+  display: grid;
+  gap: 16px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 780px) {
+  .about-card {
+    padding: 26px 20px 28px;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 28px;
+  }
+}
+
+.about-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.about-card-alt {
+  background:
+    radial-gradient(circle at 90% 0, rgba(225, 29, 116, 0.18), transparent 55%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(3, 7, 18, 0.98));
+}
+/* Colonne droite "infos" plus éditoriale */
+.about-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-meta-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+/* Bloc avec les 3 infos clés */
+.about-highlights {
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background:
+    radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.18), transparent 60%),
+    rgba(15, 23, 42, 0.96);
+}
+
+.about-highlight {
+  display: grid;
+  grid-template-columns: minmax(0, 90px) minmax(0, 1fr);
+  gap: 6px;
+  align-items: baseline;
+  font-size: 13px;
+}
+
+.about-highlight-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.about-highlight-value {
+  color: var(--text-main);
+  font-weight: 500;
+}
+.about-pills {
+  display: grid;
+  gap: 8px;
+}
+
+.about-pill {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding: 7px 11px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  background:
+    radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.14), transparent 55%),
+    rgba(15, 23, 42, 0.96);
+}
+
+.about-pill-label {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 10px;
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.about-pill-value {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* Tags éditoriaux en dessous */
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.about-tag {
+  font-size: 11px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.55);
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.98), rgba(3, 7, 18, 0.98));
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  white-space: nowrap;
+}
+.about-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chip {
+  font-size: 11px;
+  padding: 5px 11px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: var(--text-muted);
+  background: radial-gradient(circle at top, rgba(99, 102, 241, 0.2), rgba(15, 23, 42, 0.98));
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* --- UNIVERS / PRATIQUES --- */
+.pratiques-card {
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.2), transparent 55%),
+              var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  padding: 22px 16px 24px;
+  display: grid;
+  gap: 18px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.pratiques-card::before {
+  content: "DOSSIER";
+  position: absolute;
+  left: 22px;
+  top: 18px;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.28);
+}
+/* Variante une seule colonne pour Univers & pratiques */
+.pratiques-card.pratiques-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pratiques-left p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-weight: 300;
+}
+
+.pratiques-intro {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+/* Petite “sous-colonne” pour les listes */
+.pratiques-columns {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+/* Moodboard visuel */
+.pratiques-mood {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.pratiques-mood-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: linear-gradient(135deg, #020617, #111827);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9);
+  min-height: 70px;
+}
+
+.pratiques-mood-item.tall {
+  grid-row: span 2;
+  min-height: 150px;
+}
+
+.pratiques-mood-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.1);
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.pratiques-mood-item:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.2);
+}
+
+@media (max-width: 779px) {
+  .pratiques-mood {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pratiques-mood-item.tall {
+    grid-row: auto;
+    min-height: 100px;
+  }
+}
+
+@media (min-width: 780px) {
+  .pratiques-card {
+    padding: 26px 20px 28px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 26px;
+  }
+}
+.pratiques-left p {
+  font-size: 13px;          /* un peu plus fin que le 14px global */
+  line-height: 1.7;         /* plus d’air = moins “massif” */
+  color: var(--text-muted); /* garde le ton discret */
+  margin-bottom: 6px;
+  font-weight: 300;         /* Inter light, si dispo dans ton import */
+}
+
+/* Optionnel : rendre le titre un peu plus raffiné dans cette section */
+.pratiques-left .section-title {
+  font-size: 22px;
+  letter-spacing: 0.08em;
+}
+@media (min-width: 768px) {
+  .pratiques-left .section-title {
+    font-size: 24px;
+  }
+}
+
+.pratiques-mood {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.pratiques-mood-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: linear-gradient(135deg, #020617, #111827);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9);
+  min-height: 70px;
+}
+
+.pratiques-mood-item.tall {
+  grid-row: span 2;
+  min-height: 150px;
+}
+
+.pratiques-mood-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.1);
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.pratiques-mood-item:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.2);
+}
+
+@media (max-width: 779px) {
+  .pratiques-mood {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pratiques-mood-item.tall {
+    grid-row: auto;
+    min-height: 100px;
+  }
+}
+.pratiques-list {
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.pratiques-list span {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.chapter-break {
+  padding: 26px 0 30px;
+}
+
+.chapter-inner {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.96), rgba(3, 7, 18, 0.98));
+  padding: 12px 18px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: center;
+}
+
+.chapter-kicker {
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.chapter-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.chapter-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+@media (min-width: 768px) {
+  .chapter-inner {
+    border-radius: 18px;
+    padding: 14px 22px 15px;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    text-align: left;
+    gap: 16px;
+  }
+  .chapter-title {
+    font-size: 20px;
+  }
+}
+.fullwidth-photo {
+  padding: 18px 0 22px;
+}
+
+.fullwidth-frame {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.98),
+    0 0 0 1px rgba(15, 23, 42, 0.9);
+  max-height: 260px;
+}
+
+.fullwidth-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter:
+    brightness(0.9)
+    contrast(1.05)
+    saturate(1.05);
+  transition: transform 1.4s ease, filter 0.6s ease;
+}
+
+.fullwidth-frame:hover img {
+  transform: scale(1.04);
+  filter:
+    brightness(0.95)
+    contrast(1.08)
+    saturate(1.15);
+}
+/* --- PLATEFORMES --- */
+.links-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+@media (min-width: 640px) {
+  .links-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.link-card {
+  background: rgba(3, 7, 18, 0.98);
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  padding: 12px 13px 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.8);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.link-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.18), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  pointer-events: none;
+}
+
+.link-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.95);
+  border-color: var(--accent-soft);
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.98), rgba(3, 7, 18, 0.98));
+}
+
+.link-card:hover::before {
+  opacity: 1;
+}
+
+.link-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.link-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.break-dark {
+  padding: 34px 0 32px;
+}
+
+.break-inner {
+  border-radius: 22px;
+  border: 1px solid rgba(15, 23, 42, 0.95);
+  background: radial-gradient(circle at 50% 0, #020617, #000000);
+  padding: 22px 18px 20px;
+  text-align: center;
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.98),
+    0 0 0 1px rgba(15, 23, 42, 0.9);
+}
+
+.break-label {
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.break-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.break-note {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+@media (min-width: 768px) {
+  .break-inner {
+    padding: 26px 26px 24px;
+  }
+  .break-quote {
+    font-size: 20px;
+  }
+}
+/* --- GALERIE --- */
+.gallery-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+@media (min-width: 640px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(135deg, #020617, #111827);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.8);
+  transform: translateZ(0);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease, filter 0.6s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+  filter: saturate(1.1);
+}
+
+/* --- CONTACT --- */
+.contact-card {
+  background: radial-gradient(circle at 85% 0, rgba(225, 29, 116, 0.16), transparent 55%),
+              var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  padding: 22px 16px 24px;
+  display: grid;
+  gap: 18px;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: "CONTACT";
+  position: absolute;
+  right: 22px;
+  top: 18px;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.26);
+}
+
+@media (min-width: 780px) {
+  .contact-card {
+    padding: 24px 20px 26px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 26px;
+  }
+}
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+input, textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(51, 65, 85, 0.9);
+  background: #020617;
+  color: var(--text-main);
+  padding: 9px 11px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.6);
+}
+
+.contact-info {
+  font-size: 13px;
+  color: var(--text-muted);
+  display: grid;
+  gap: 10px;
+}
+
+.contact-info ul {
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+
+.contact-info span {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* --- LEGAL --- */
+.legal {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: rgba(3, 7, 18, 0.98);
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  padding: 12px 13px 14px;
+  line-height: 1.5;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.9);
+}
+
+/* --- FOOTER --- */
+footer {
+  border-top: 1px solid rgba(15, 23, 42, 0.9);
+  padding: 18px;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  background: rgba(3, 7, 18, 0.98);
+}
+
+/* --- SCROLL REVEAL (désactivé pour les tests) --- */
+.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ombres plus profondes */
+.link-card,
+.gallery-item,
+.about-card,
+.pratiques-card,
+.contact-card {
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.95),
+    0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+/* --- INTRO PLEIN ÉCRAN AVEC VIDÉO + TEXTE --- */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #020617 0%, #02010a 45%, #000000 100%);
+  z-index: 9999;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.8s ease-out;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 1;           /* conteneur au-dessus du fond de page */
+  max-width: 900px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* Halo nocturne derrière la vidéo */
+.intro-content::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(129, 140, 248, 0.42), transparent 60%),
+    radial-gradient(circle at 80% 100%, rgba(244, 63, 94, 0.3), transparent 60%);
+  filter: blur(24px);
+  opacity: 0.9;
+  z-index: -2;          /* bien derrière tout */
+}
+
+/* Voile nocturne très léger par-dessus la vidéo */
+.intro-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(15, 23, 42, 0.55), transparent 60%),
+    radial-gradient(circle at 90% 100%, rgba(30, 64, 175, 0.35), transparent 65%),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.35), rgba(15, 23, 42, 0.65));
+  mix-blend-mode: soft-light;
+  opacity: 0.9;
+  z-index: 1;           /* au-dessus de la vidéo, mais sous le texte */
+}
+
+/* Vidéo responsive, avec léger arrondi + filtre nuit */
+#intro-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+  background: #020617;
+  box-shadow:
+    0 0 0 1px rgba(148, 163, 184, 0.5),
+    0 0 24px rgba(15, 23, 42, 0.9);
+  filter:
+    brightness(0.85)
+    contrast(1.08)
+    saturate(1.03)
+    hue-rotate(-8deg)
+    blur(0.3px);
+  position: relative;
+  z-index: 0;           /* sous le voile (.intro-content::after) et sous le texte */
+}
+
+/* Texte en surimpression, avec animation élégante */
+.intro-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.96);
+  transition:
+    opacity 0.9s ease-out,
+    transform 0.9s ease-out;
+  color: #f9fafb;
+  padding: 0 24px;
+  z-index: 2;           /* IMPORTANT : au-dessus de la vidéo ET des voiles */
+}
+
+/* Légère bande sombre dégradée derrière le texte pour lisibilité */
+.intro-text::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(15, 23, 42, 0.7), transparent 65%),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.7), transparent 40%, transparent 60%, rgba(15, 23, 42, 0.7));
+  filter: blur(8px);
+  opacity: 0.9;
+  z-index: -1;          /* derrière la phrase elle-même */
+}
+
+.intro-line1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+.intro-line2 {
+  font-size: clamp(14px, 2.4vw, 18px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d1d5db;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.9s ease-out,
+    transform 0.9s ease-out;
+  transition-delay: 0.15s;
+}
+
+/* Activation du texte */
+#intro-overlay.show-text .intro-text {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#intro-overlay.show-text .intro-line1,
+#intro-overlay.show-text .intro-line2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Disparition de l'intro */
+#intro-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+  </style>
+</head>
+<body>
+
+<!-- INTRO PLEIN ÉCRAN AVEC VIDÉO + TEXTE -->
+<div id="intro-overlay">
+  <div class="intro-content">
+    <video id="intro-video" autoplay muted playsinline>
+      <source src="intro.mp4" type="video/mp4">
+      Ton navigateur ne supporte pas la vidéo HTML5.
+    </video>
+
+    <!-- Texte en surimpression -->
+    <div class="intro-text">
+      <div class="intro-line1">Princesse Athénaïs</div>
+      <div class="intro-line2">La nuit commence ici.</div>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="logo-mark">A</div>
+      <div class="logo-text">
+        <span>Princesse Athénaïs</span>
+        <span>Site officiel</span>
+      </div>
+    </div>
+    <nav>
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#pratiques">Univers</a>
+      <a href="#seances">Séances</a>
+      <a href="#plateformes">Plateformes</a>
+      <a href="#galerie">Galerie</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- 1. ACCUEIL / HERO -->
+  <section id="accueil" class="hero reveal">
+    <div>
+      <div class="section-label">Accueil</div>
+      <h1>
+        Bienvenue dans l’univers de
+        <span>Princesse Athénaïs</span>.
+      </h1>
+      <p class="hero-subtitle">
+        Femme, assurée, experte. Résolument dominante et salement cruelle. Une Princesse nocturne, à découvrir, à subir. Ni oubli, ni pardon. Avec Princesse Athénaïs, tout commence dans ta tête. Pour ne plus finir. Hygiène parfaite, respect total, discrétion absolue.
+      </p>
+      <div class="hero-actions">
+        <a href="#plateformes" class="btn btn-primary">Accéder aux plateformes</a>
+        <a href="https://wa.me/33784326361" class="btn btn-outline" target="_blank" rel="noopener">
+    Contacter
+  </a>
+      </div>
+      <p class="hero-note">
+        En poursuivant la navigation, tu confirmes être majeur(e) selon la législation de ton pays.
+      </p>
+    </div>
+
+    <div class="hero-media">
+      <div class="hero-photo">
+        <img src="imagesp/portrait.jpeg" alt="Portrait de Princesse Athénaïs">
+      </div>
+      <div class="hero-badge">
+  <span class="hero-badge-label">Focus</span>
+  <span class="hero-badge-text">Pieds, talons, mental. Rien d’autre.</span>
+</div>
+    </div>
+  </section>
+
+  <!-- 2. À PROPOS -->
+  <section id="apropos" class="reveal">
+    <div class="section-label">À propos</div>
+    <div class="about-card">
+      <div>
+        <h2 class="section-title">Qui est Princesse Athénaïs&nbsp;?</h2>
+        <p>Je suis une dominatrice lyonnaise spécialisée dans le fétichisme des pieds.</p>
+        <p>Déesse aux pieds parfaits, aux longues jambes sublimées par le cuir ou le nylon et chaussées de Louboutin, j’ai une passion pour les chaussures et les hommes que je rends faibles.</p>
+        <p>1m75, 62 kg, pointure 39.</p>
+        <p>Je suis la prédatrice à qui tu ne veux pas résister.</p>
+        <p>Je reçois dans un appartement prévu, à Villeurbanne, côté Lyon 6, avec matériel et douche à disposition.</p>
+        <p>Je me déplace parfois à l’hôtel, sur réservation et supplément, et également une fois par mois à Paris. Les dates sont à consulter sur mes réseaux.</p>
+      </div>
+         <div class="about-side">
+  <p class="about-meta-label">Repères rapides</p>
+
+  <div class="about-pills">
+    <div class="about-pill">
+      <span class="about-pill-label">Public</span>
+      <span class="about-pill-value">Hommes majeurs, soumis assumés</span>
+    </div>
+    <div class="about-pill">
+      <span class="about-pill-label">Langue</span>
+      <span class="about-pill-value">Français (anglais possible sur demande)</span>
+    </div>
+    <div class="about-pill">
+      <span class="about-pill-label">Zone</span>
+      <span class="about-pill-value">Lyon &amp; Villeurbanne, passages réguliers à Paris</span>
+    </div>
+  </div>
+
+  <div class="about-tags">
+    <span class="about-tag">Domination mentale &amp; fétichisme des pieds</span>
+    <span class="about-tag">Hygiène, cadre et discrétion absolus</span>
+    <span class="about-tag">Soumis triés, aucun plan lover</span>
+  </div>
+</div>
+  </section>
+
+  <!-- BANDEAU CHAPITRE AVANT UNIVERS -->
+<section class="chapter-break reveal">
+  <div class="chapter-inner">
+    <p class="chapter-kicker">Chapitre 1</p>
+    <h2 class="chapter-title">Le cadre &amp; l’univers.</h2>
+    <p class="chapter-sub">
+      Tu ne viens pas « voir ce que ça donne ». Tu entres dans un système précis.
+    </p>
+  </div>
+</section>
+
+ <!-- 2bis. UNIVERS & PRATIQUES -->
+<section id="pratiques" class="reveal">
+  <div class="section-label">Univers</div>
+
+  <div class="pratiques-card pratiques-single">
+    <div class="pratiques-left">
+      <h2 class="section-title">Univers &amp; pratiques.</h2>
+
+      <p class="pratiques-intro">
+        Cette section te permet de savoir dans quel type d’univers tu t’engages et comment se structurent les séances.
+      </p>
+      <p>
+        Les pratiques sont sélectionnées, cadrées et toujours définies à l’avance, dans le respect de mes limites et des tiennes.
+      </p>
+      <p>
+        Avec moi, pas de nudité, pas de drogue, pas de pratiques illégales, facesitting habillée, pas de scato et aucun accès à mon intimité.
+      </p>
+      <p>
+        N'essaie même pas.
+      </p>
+
+      <div class="pratiques-columns">
+        <div>
+          <p class="section-text" style="margin-bottom:6px;">
+            Quelques axes possibles, à adapter selon ton profil et ta demande :
+          </p>
+          <ul class="pratiques-list">
+            <li>• <span>Domination mentale &amp; jeux de rôle :</span> cadre, attitude, rapports de pouvoir mis en scène.</li>
+            <li>• <span>Fétichisme &amp; focus corps :</span> mise en valeur des pieds, des jambes, des textures et accessoires.</li>
+            <li>• <span>Jeux de contrôle :</span> règles, frustration, gestion de la distance et des permissions.</li>
+            <li>• <span>Scénarios personnalisés :</span> construction d’un cadre précis autour de ton profil et de tes limites.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="section-text" style="margin-top:10px;">
+        Les détails concrets, les limites et le cadre sont toujours précisés en privé, après un premier échange clair et complet.
+      </p>
+
+      <!-- Moodboard visuel, optionnel -->
+      <div class="pratiques-mood">
+        <div class="pratiques-mood-item tall">
+          <img src="imagesp/mood1.jpeg" alt="Chaussures et domination">
+        </div>
+        <div class="pratiques-mood-item">
+          <img src="imagesp/mood2.jpeg" alt="Ambiance lumière tamisée">
+        </div>
+        <div class="pratiques-mood-item">
+          <img src="imagesp/mood3.jpeg" alt="Détails de pieds et accessoires">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- 2ter. SÉANCES & OFFRANDES -->
+  <section id="seances" class="reveal">
+    <div class="section-label">Séances & offrandes</div>
+    <div class="about-card about-card-alt">
+      <div>
+        <h2 class="section-title">Derrière l’écran</h2>
+        <p class="section-text" style="margin-bottom:8px;">
+          Séances à distance, pour t’installer à ta place, où que tu sois.
+        </p>
+
+        <ul class="pratiques-list" style="margin-bottom:10px;">
+          <li>• Webcam ou téléphone&nbsp;: WhatsApp, Snapchat, Teams…</li>
+          <li>• Noir ou rose, selon tes préférences et l’univers choisi.</li>
+          <li>• Option lingerie&nbsp;: <span>+10&nbsp;€</span> par séance.</li>
+        </ul>
+
+        <p class="section-text" style="margin-bottom:4px;"><strong>Tarifs :</strong></p>
+        <ul class="pratiques-list">
+          <li>• <span>15 minutes :</span> 40&nbsp;€</li>
+          <li>• <span>Vidéo personnalisée :</span> 50&nbsp;€ (environ 10 minutes, réalisée sur demande)</li>
+          <li>• <span>Appartenance virtuelle :</span> 400&nbsp;€ / mois – pour ceux qui souhaitent s’inscrire dans une relation suivie et clairement assumée.</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="section-title">Face à face</h2>
+        <p class="section-text" style="margin-bottom:8px;">
+          Séances en présentiel, pour ceux qui sont prêts à se déplacer… et à se tenir.
+        </p>
+
+        <ul class="pratiques-list" style="margin-bottom:10px;">
+          <li>• <span>30 minutes :</span> 150&nbsp;€</li>
+          <li>• <span>1 heure :</span> 250&nbsp;€</li>
+          <li>
+            • <span>Séance centrée sur l’anal :</span> 300&nbsp;€ – une expérience dédiée, encadrée et respectueuse, réservée à ceux qui souhaitent explorer cette pratique avec maîtrise et sécurité.
+          </li>
+          <li>
+            • <span>Séance luxe :</span> 500&nbsp;€ – inclut un dîner au restaurant suivi d’une séance privée, pour une expérience complète et raffinée.
+          </li>
+          <li>
+            • <span>Option lingerie :</span> +50&nbsp;€ – disponible à partir de la deuxième rencontre seulement.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION RUPTURE AVANT PLATEFORMES -->
+<section class="break-dark reveal">
+  <div class="break-inner">
+    <p class="break-label">Rappel</p>
+    <p class="break-quote">
+      « Tu ne réserves pas une séance. Tu t’abandonnes à une dynamique que JE décide. »
+    </p>
+    <p class="break-note">
+      Si tu hésites encore, tu n’es pas prêt. Continue de défiler. Observe. Intègre.
+    </p>
+  </div>
+</section>
+  <section class="fullwidth-photo reveal">
+  <div class="fullwidth-frame">
+    <img src="imagesp/banner.jpeg" alt="Ambiance nocturne Princesse Athénaïs">
+  </div>
+</section>
+
+   <!-- BANDEAU CHAPITRE AVANT PLATEFORMES / LIENS -->
+<section class="chapter-break reveal">
+  <div class="chapter-inner">
+    <p class="chapter-kicker">Chapitre 2</p>
+    <h2 class="chapter-title">Tu viens à moi.</h2>
+    <p class="chapter-sub">
+      Tu sembles prêt. Viens ramper à mes pieds.
+    </p>
+  </div>
+</section>
+
+  <!-- 3. PLATEFORMES / LIENS -->
+  <section id="plateformes" class="reveal">
+    <div class="section-label">Plateformes</div>
+    <h2 class="section-title">Retrouver Princesse Athénaïs en ligne.</h2>
+    <p class="section-text">
+      Voici les principaux liens vers mes plateformes et réseaux. À suivre, impérativement.
+    </p>
+
+    <div class="links-grid">
+      <a class="link-card" href="https://x.com/Athenais_Domina" target="_blank" rel="noopener">
+        <span class="link-title">Mon compte X</span>
+        <span class="link-desc">Pour connaître mes principales dates et actualités.</span>
+      </a>
+
+      <a class="link-card" href="https://instabio.cc/Princesseathenais" target="_blank" rel="noopener">
+        <span class="link-title">Mon compte Instagram</span>
+        <span class="link-desc">Pour me suivre... en images.</span>
+      </a>
+
+      <a class="link-card" href="https://www.vends-ta-culotte.com/user/29101/Princesse+Ath%C3%A9na%C3%AFs++Findom+Dominatrice+%F0%9F%91%A0" target="_blank" rel="noopener">
+        <span class="link-title">Vends Ta Culotte</span>
+        <span class="link-desc">Teasers visuels, annonces de nouveaux projets et collaborations.</span>
+      </a>
+
+      <a class="link-card" href="https://t.me/princesseathenais69#" target="_blank" rel="noopener">
+        <span class="link-title">Telegram</span>
+        <span class="link-desc">Pour m'écrire, à toute heure du jour, ou de la nuit.</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 3bis. GALERIE -->
+  <section id="galerie" class="reveal">
+    <div class="section-label">Galerie</div>
+    <h2 class="section-title">A vénérer.</h2>
+    <p class="section-text">
+      Un échantillon de mon univers en images.
+    </p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="imagesp/image1.png" alt="Princesse Athénaïs – Visuel 1">
+      </div>
+      <div class="gallery-item">
+        <img src="imagesp/image2.jpeg" alt="Princesse Athénaïs – Visuel 2">
+      </div>
+      <div class="gallery-item">
+        <img src="imagesp/image3.jpeg" alt="Princesse Athénaïs – Visuel 3">
+      </div>
+      <div class="gallery-item">
+        <img src="imagesp/image4.jpeg" alt="Princesse Athénaïs – Visuel 4">
+      </div>
+      <div class="gallery-item">
+        <img src="imagesp/image5.jpeg" alt="Princesse Athénaïs – Visuel 5">
+      </div>
+      <div class="gallery-item">
+        <img src="imagesp/image6.jpeg" alt="Princesse Athénaïs – Visuel 6">
+      </div>
+    </div>
+  </section>
+
+    <!-- 5. MENTIONS / AVERTISSEMENT -->
+  <section>
+    <div class="legal">
+      <strong>Avertissement :</strong> ce site et les plateformes associées s’adressent exclusivement à un public majeur, selon la législation en vigueur dans ton pays. En accédant aux liens proposés, tu confirmes avoir l’âge légal requis.
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> Princesse Athénaïs – Site officiel.
+</footer>
+
+<script>
+  // Met à jour l'année dans le footer si l'élément existe
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+
+  // Intro vidéo + texte (sans dépendre de la fin réelle de la vidéo)
+  document.addEventListener('DOMContentLoaded', function () {
+    const overlay = document.getElementById('intro-overlay');
+    const video   = document.getElementById('intro-video');
+
+    if (!overlay) return;
+
+    // Durée totale de l'intro (en ms)
+    const INTRO_TOTAL = 8000; // 8 s
+    // Moment où on affiche le texte (par rapport au début)
+    const TEXT_DELAY  = 6000; // texte à 6 s
+
+    // 1) Tente de lancer la vidéo, mais on ne compte pas dessus
+    if (video) {
+      // On force muted + playsInline + autoplay pour maximiser les chances
+      video.muted = true;
+      video.playsInline = true;
+      // autoplay déjà dans le HTML, mais on insiste :
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {
+          // Autoplay bloqué : pas grave, l'intro sera gérée par les timers
+        });
+      }
+    }
+
+    // 2) Afficher le texte au bout de TEXT_DELAY
+    setTimeout(function () {
+      overlay.classList.add('show-text');
+    }, TEXT_DELAY);
+
+    // 3) Fermer l'intro au bout de INTRO_TOTAL
+    setTimeout(function () {
+      overlay.classList.add('hidden');
+    }, INTRO_TOTAL);
+  });
+</script>
+</body>
+</html>
